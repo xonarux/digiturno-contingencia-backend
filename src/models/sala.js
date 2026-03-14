@@ -34,6 +34,11 @@ Sala.update = async (id, { nombre }) => {
 
 //Consultar los perfiles de atencion de las cajas que tienen el id_sala de una sala
 
+Sala.findByNombre = async (nombre) => {
+    const [rows] = await db.query('SELECT * FROM Salas WHERE nombre = ?', [nombre]);
+    return rows[0];
+};
+
 Sala.getPerfilesAtencionBySalaId = async (id_sala) => {
     const [rows] = await db.query(
         `SELECT DISTINCT perfil_atencion FROM Cajas WHERE id_sala = ?`,

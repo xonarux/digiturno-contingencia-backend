@@ -31,6 +31,10 @@ Turno.create = async ({ nombre, cedula, destino, id_sala, estado }) => {
         'INSERT INTO Turnos (nombre, cedula, destino, id_sala, estado) VALUES (?, ?, ?, ?, ?)',
         [nombre, cedula, destino, id_sala, "En espera"]
     );
+    console.log('[Turno.create] insertId:', result.insertId, '| affectedRows:', result.affectedRows);
+    if (!result.affectedRows) {
+        throw new Error('INSERT no afectó ninguna fila');
+    }
     return {
         id: result.insertId,
         nombre,

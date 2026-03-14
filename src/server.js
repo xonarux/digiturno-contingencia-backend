@@ -3,6 +3,7 @@ import turnoRoutes from './routes/turnoRoutes.js';
 import { createConnection } from 'mysql2/promise';
 import salaRoutes from './routes/salaRoutes.js';
 import cajaRoutes from './routes/cajaRoutes.js';
+import webhookRoutes from './routes/webhookRoutes.js';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use('/api', turnoRoutes);
 app.use('/api', salaRoutes);
 app.use('/api', cajaRoutes);
+app.use('/api', webhookRoutes);
 
 
 const PORT = process.env.PORT || 3000;
